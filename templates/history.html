@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}
+History
+{% endblock %}
+{% block main %}
+<div class="section container">
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price(USD)</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for val in valores %}
+            <tr>
+                <td>{{ val['symbol'] }}</td>
+                <td>{{ val['shares']}} </td>
+                <td>{{ val['price'] | usd }}</td>
+                <td>{{ val['transaction_date'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}

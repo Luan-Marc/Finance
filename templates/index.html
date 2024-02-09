@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block title %}
+Index
+{% endblock %}
+{% block main %}
+<div class="section container">
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Current Price(USD)</th>
+                <th>Total(USD)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for val in valores %}
+            <tr>
+                <td>{{ val['symbol'] }}</td>
+                <td>{{ val['shares']}} </td>
+                <td>{{ val['price'] | usd }}</td>
+                <td>{{ (val['price'] * val ['shares']) | usd }}</td>
+                <td>
+                    <form action="/buy" method="POST">
+                        <input type="hidden" name="symbol" value="{{ val['symbol'] }}">
+                        <input type="hidden" name="shares" value= 1>
+                        <button class="btn btn-success" type="submit">Buy</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/sell" method="POST">
+                        <input type="hidden" name="symbol" value="{{ val['symbol'] }}">
+                        <input type="hidden" name="shares" value=1>
+                        <button class="btn btn-danger" type="submit">Sell</button>
+                    </form>
+                </td>
+
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>
+                    Cash(USD): 
+                </td>
+                <td>
+                    {{ usuariocash | usd}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total(USD): 
+                </td>
+                <td>
+                    {{ total | usd }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
