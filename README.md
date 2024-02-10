@@ -1,10 +1,9 @@
 # Finance 
-
 Finance é um aplicativo web, feito com Flask, que permite aos usuários logados “comprar” e “vender” ações, bem como consultar cotações de ações reais obtidas na API IEX. Os usuários também podem visualizar o histórico de transações da sua carteira de ações. 
 
 <img src="screnshot.png" alt="screenshot of finance project" width="600px">
 
-## Technologies
+## Tecnologias
 * Python
 * Flask
 * SQLite
